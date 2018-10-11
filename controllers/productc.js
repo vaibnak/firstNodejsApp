@@ -30,7 +30,12 @@ function(err, product){
 }
 );
 };
-
+exports.product_delete = function(req, res){
+  Product.findByIdAndRemove(req.params.id, function(err){
+    if(err) return next(err);
+    res.send('Deleted succesfully');
+  });
+};
 exports.test = function (req, res, next){
   res.send('Greetings from the test controller');
 };
